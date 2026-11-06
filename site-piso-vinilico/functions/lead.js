@@ -76,7 +76,7 @@ exports.handler = async (event) => {
   const temWhatsApp = env.WHATSAPP_TOKEN && env.WHATSAPP_PHONE_NUMBER_ID
 
   if (temWhatsApp && env.WHATSAPP_TEMPLATE_AVISO && env.EMPRESA_WHATSAPP) {
-    // EMPRESA_WHATSAPP aceita vários números separados por vírgula (ex.: técnicos de plantão)
+    // EMPRESA_WHATSAPP aceita vários números separados por vírgula (ex.: vendedores)
     for (const numero of env.EMPRESA_WHATSAPP.split(",").map((n) => n.trim()).filter(Boolean)) {
       tarefas.push(
         enviarTemplate(numero, env.WHATSAPP_TEMPLATE_AVISO, [

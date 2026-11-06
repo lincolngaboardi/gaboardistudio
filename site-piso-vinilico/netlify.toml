@@ -1,4 +1,4 @@
-# Deploy no Netlify com "Base directory" = whatsapp-lead-site
+# Deploy no Netlify com "Base directory" = site-piso-vinilico
 [build]
   publish = "public"
   functions = "functions"
@@ -6,7 +6,7 @@
 [functions]
   node_bundler = "esbuild"
 
-# Mesmas rotas do site original
+# Rotas da API
 [[redirects]]
   from = "/api/lead"
   to = "/.netlify/functions/lead"

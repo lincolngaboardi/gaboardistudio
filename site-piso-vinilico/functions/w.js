@@ -16,7 +16,7 @@ exports.handler = async (event) => {
 
   const cidade = process.env.CIDADE || ""
   const texto = [
-    "Olá! Vim pelo site e preciso de atendimento",
+    "Olá! Vim pelo site e quero um orçamento de piso vinílico",
     bairro ? `no bairro ${bairro}` : cidade ? `em ${cidade}` : "",
   ]
     .filter(Boolean)
