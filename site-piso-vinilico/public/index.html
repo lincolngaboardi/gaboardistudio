@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casa Vinílica | Piso vinílico instalado em Sua Cidade</title>
+  <meta name="description" content="Instalação de piso vinílico em Sua Cidade: colado, click e em manta, com rodapé e acabamento. Obra limpa, sem quebra-quebra. Deixe seu WhatsApp e receba o orçamento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!--
+    Configuração do mecanismo de contato. Troque os valores por site/cidade.
+    O número da empresa NÃO fica no front: ele está nas variáveis de ambiente
+    da função (EMPRESA_WHATSAPP), assim não é raspado por bots.
+  -->
+  <script>
+    window.LEAD_CONFIG = {
+      routerBase: "/api",
+      nicho: "piso-vinilico",
+      cidade: "Sua Cidade",
+      bairroDaPagina: "",   // preencha nas páginas de bairro (ex.: "Centro")
+      ctaDireto: false      // true = botões vão direto para o wa.me da empresa
+    };
+  </script>
+
+  <!-- Google Analytics 4 (opcional): troque G-XXXXXXX e descomente.
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date()); gtag("config", "G-XXXXXXX");
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  -->
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true"></span>Casa<strong>Vinílica</strong></a>
+    <nav class="nav-desktop">
+      <a href="#servicos" class="nav-link">Serviços</a>
+      <a href="#faq" class="nav-link">Dúvidas</a>
+      <a href="#bairros" class="nav-link">Bairros</a>
+    </nav>
+    <button type="button" class="btn header-cta" data-lead-trigger>Orçamento no WhatsApp</button>
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="#servicos">Serviços</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="#bairros">Bairros</a>
+    <button type="button" class="btn btn-primary" data-lead-trigger>Orçamento no WhatsApp</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-badge"><span class="dot"></span> Medição e orçamento grátis</div>
+      <h1>100 m² de piso vinílico prontos em <span class="hl">5 dias</span>*</h1>
+      <p class="hero-sub">Nivelamento com autonivelante, primer e piso vinílico colado em Sua Cidade, direto sobre o piso antigo, sem quebra-quebra. Deixe seu WhatsApp e receba o orçamento.</p>
+      <button type="button" class="btn btn-whatsapp btn-lg" data-lead-trigger>
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+        Quero meu orçamento pelo WhatsApp
+      </button>
+      <ul class="hero-proof">
+        <li>★★★★★ <strong>4.9</strong> de avaliação</li>
+        <li>Obra limpa, sem poeira</li>
+        <li>Garantia na instalação</li>
+      </ul>
+      <p class="hero-note">*Com 2 equipes e base firme: ~25 min de mão de obra por m² (primer + autonivelante de secagem rápida + piso colado), 24 h de cura da massa e um dia para rodapés e acabamento. O prazo exato é confirmado na medição.</p>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <div class="container">
+      <h2 class="section-title">Serviços de <span class="hl">piso vinílico</span></h2>
+      <div class="grid services">
+        <article class="card"><h3>Vinílico Colado</h3><p>Réguas finas e resistentes, ideais para apartamentos e para instalar sobre cerâmica.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+        <article class="card"><h3>Vinílico Click</h3><p>Encaixe sem cola, instalação rápida e conforto térmico e acústico.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+        <article class="card"><h3>Vinílico em Manta</h3><p>Sem emendas, ideal para clínicas, escolas e áreas comerciais.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+        <article class="card"><h3>Rodapés e Acabamentos</h3><p>Rodapé de poliestireno ou MDF, perfis e soleiras para um acabamento completo.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+        <article class="card"><h3>Preparação do Contrapiso</h3><p>Nivelamento e regularização da base para o piso durar mais.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+        <article class="card"><h3>Reparo e Troca de Réguas</h3><p>Substituição de réguas danificadas e manutenção do piso existente.</p><button type="button" data-lead-trigger class="service-link">Pedir orçamento →</button></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <p><strong>100 m² nivelados e com piso novo em até 5 dias.</strong> Mande seu WhatsApp e agende a medição grátis.</p>
+      <button type="button" data-lead-trigger class="btn btn-whatsapp cta-btn">Agendar medição</button>
+    </div>
+  </section>
+
+  <section class="section benefits-section">
+    <div class="container">
+      <h2 class="section-title">Nossos <span class="hl">diferenciais</span></h2>
+      <div class="grid benefits">
+        <div class="benefit"><h3>Sem quebra-quebra</h3><p>Instalação direto sobre o piso existente.</p></div>
+        <div class="benefit"><h3>Prazo curto</h3><p>Cerca de 25 min de mão de obra por m², mais a cura da massa: 100 m² em até 5 dias, com acabamento.</p></div>
+        <div class="benefit"><h3>Instaladores próprios</h3><p>Equipe treinada e uniformizada.</p></div>
+        <div class="benefit"><h3>Garantia</h3><p>Garantia na instalação e no material.</p></div>
+        <div class="benefit"><h3>Pagamento facilitado</h3><p>Pix e parcelamento no cartão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner cta-banner--dark">
+    <div class="container cta-inner">
+      <p>Medição e orçamento sem compromisso, direto no seu WhatsApp.</p>
+      <button type="button" data-lead-trigger class="btn btn-whatsapp cta-btn">Quero um orçamento</button>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="faq">
+    <div class="container narrow">
+      <h2 class="section-title">Perguntas <span class="hl">frequentes</span></h2>
+      <details><summary>Como funciona o orçamento pelo WhatsApp?</summary><p>Você deixa seu número no formulário e nossa equipe te chama no WhatsApp para entender o ambiente, combinar a medição e enviar o orçamento.</p></details>
+      <details><summary>Dá para instalar em cima da cerâmica?</summary><p>Sim. Se o piso antigo estiver firme e nivelado, o vinílico vai direto por cima, sem quebrar nada.</p></details>
+      <details><summary>Quanto tempo leva a instalação?</summary><p>Contando primer, autonivelante e piso colado, são cerca de 25 minutos de mão de obra por m². Em 100 m², com duas equipes: no 1º dia aplicamos primer e autonivelante de secagem rápida; no 2º dia a massa cura (no mínimo 24 h, e só colamos com a umidade da base em até 2,5%, medida com higrômetro) enquanto as réguas se adaptam ao ambiente; no 3º e 4º dias instalamos o piso; no 5º dia colocamos rodapés, fazemos o acabamento e a conferência final com você. Depois, tráfego leve em 24 h e a primeira limpeza úmida após 7 dias, para a cola curar.</p></details>
+      <details><summary>Piso vinílico pode molhar? É bom para pets?</summary><p>Pode ser limpo com pano úmido e é resistente a riscos do dia a dia. Só não é indicado para áreas externas ou com água parada.</p></details>
+      <details><summary>Quais formas de pagamento?</summary><p>Pix, cartão de débito e crédito parcelado.</p></details>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contato">
+    <div class="container">
+      <h2 class="section-title">Entre em <span class="hl">contato</span></h2>
+      <div class="grid contact">
+        <button type="button" data-lead-trigger class="contact-card whatsapp-card">
+          <span class="contact-icon whatsapp-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span>
+          <span><strong>WhatsApp</strong><small>Orçamento em poucos minutos</small></span>
+        </button>
+        <button type="button" data-lead-trigger class="contact-card phone-card">
+          <span class="contact-icon phone-icon">📐</span>
+          <span><strong>Medição grátis</strong><small>Deixe seu número e agendamos a visita</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhoods-section" id="bairros">
+    <div class="container">
+      <h2 class="section-title">Piso vinílico em <span class="hl">todos os bairros</span></h2>
+      <!-- Cada bairro pode ter a própria página (SEO local) com LEAD_CONFIG.bairroDaPagina preenchido. -->
+      <div class="bairros">
+        <button type="button" class="bairro-link" data-lead-trigger data-bairro="Centro">Centro</button>
+        <button type="button" class="bairro-link" data-lead-trigger data-bairro="Jardim América">Jardim América</button>
+        <button type="button" class="bairro-link" data-lead-trigger data-bairro="Vila Nova">Vila Nova</button>
+        <button type="button" class="bairro-link" data-lead-trigger data-bairro="Parque Industrial">Parque Industrial</button>
+        <button type="button" class="bairro-link" data-lead-trigger data-bairro="Cidade Alta">Cidade Alta</button>
+      </div>
+      <p class="muted">Não encontrou seu bairro? <button type="button" data-lead-trigger class="link-inline">Fale com a gente</button>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© <span id="ano"></span> Casa Vinílica · Sua Cidade. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Botão flutuante -->
+<button type="button" class="wa-bubble" data-lead-trigger aria-label="Pedir orçamento via WhatsApp">
+  <span class="wa-label">Orçamento grátis</span>
+  <span class="wa-bubble-inner"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span>
+</button>
+
+<!-- Modal de captura -->
+<div class="lead-modal" data-lead-modal hidden role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+  <div class="lead-modal-backdrop" data-lead-close></div>
+  <div class="lead-modal-card">
+    <div class="lead-modal-banner">
+      <h3 id="lead-modal-title">Orçamento de Piso Vinílico</h3>
+      <button type="button" class="lead-modal-close" data-lead-close aria-label="Fechar">×</button>
+    </div>
+    <div class="lead-modal-header">
+      <div class="lead-status-badge"><span class="lead-status-dot"></span> Atendimento disponível</div>
+      <p>Deixe seu WhatsApp e receba o orçamento do seu piso vinílico:</p>
+    </div>
+    <form class="lead-form" data-lead-form novalidate>
+      <div class="lead-form-erro" data-lead-erro hidden role="alert" aria-live="polite"></div>
+      <label>
+        <span>Seu WhatsApp (com DDD)</span>
+        <input type="tel" name="telefone" inputmode="tel" autocomplete="tel-national" required placeholder="(00) 99999-9999">
+      </label>
+      <!-- honeypot: invisível para humanos; bots preenchem e são descartados -->
+      <input type="text" name="confirmacao_url" tabindex="-1" autocomplete="off" class="lead-form-honeypot" aria-hidden="true">
+      <button type="submit" class="lead-form-submit">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+        <span>Quero meu orçamento</span>
+      </button>
+      <p class="lead-form-proof">Resposta rápida · sem compromisso</p>
+    </form>
+    <div class="lead-state lead-state-loading" hidden><div class="spinner"></div><p>Enviando para nossa equipe...</p></div>
+    <div class="lead-state lead-state-success" hidden>
+      <div class="lead-state-icon ok">✓</div>
+      <h4>Solicitação enviada!</h4>
+      <p data-success-msg></p>
+      <button type="button" class="lead-form-submit" data-lead-close>Fechar</button>
+    </div>
+    <div class="lead-state lead-state-error" hidden>
+      <div class="lead-state-icon err">!</div>
+      <h4>Não foi possível enviar</h4>
+      <p>Tente novamente em alguns instantes.</p>
+      <button type="button" class="lead-form-submit" data-retry>Tentar novamente</button>
+      <button type="button" class="btn-ghost" data-lead-close>Fechar</button>
+    </div>
+    <div class="lead-modal-footer"><span class="stars">★★★★★</span> <strong>4.9</strong> · +500 ambientes instalados</div>
+  </div>
+</div>
+
+<!-- Ícone do WhatsApp reutilizado via <use href="#wa"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.07-.1-.23-.17-.48-.29-.25-.12-1.47-.72-1.69-.8-.23-.08-.37-.12-.56.12-.18.25-.64.8-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.3-.01-.47-.01"/></symbol>
+</svg>
+
+<script>
+  document.getElementById("ano").textContent = new Date().getFullYear();
+  (function () {
+    const btn = document.getElementById("menuToggle"), nav = document.getElementById("navMobile");
+    btn.addEventListener("click", () => {
+      const aberto = nav.classList.toggle("open");
+      btn.classList.toggle("active", aberto);
+      btn.setAttribute("aria-expanded", String(aberto));
+    });
+    nav.querySelectorAll("a, button").forEach((el) => el.addEventListener("click", () => {
+      nav.classList.remove("open"); btn.classList.remove("active"); btn.setAttribute("aria-expanded", "false");
+    }));
+  })();
+</script>
+<script src="/js/lead.js" defer></script>
+</body>
+</html>
