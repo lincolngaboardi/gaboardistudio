@@ -1,0 +1,23 @@
+# Deploy no Netlify com "Base directory" = site-piso-vinilico-v2
+[build]
+  publish = "public"
+  functions = "functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Rotas da API
+[[redirects]]
+  from = "/api/lead"
+  to = "/.netlify/functions/lead"
+  status = 200
+
+[[redirects]]
+  from = "/api/w/*"
+  to = "/.netlify/functions/w"
+  status = 200
+
+[[redirects]]
+  from = "/api/t/*"
+  to = "/.netlify/functions/t"
+  status = 200
