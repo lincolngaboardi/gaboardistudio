@@ -83,3 +83,24 @@ No Netlify: novo site a partir deste repositório com **Base directory** =
 teste em `/?form=1`.
 
 Para ativar o GA4, descomente o bloco no `<head>` do `index.html`.
+
+## SEO e GEO (buscadores e respostas por IA)
+
+Antes de publicar, troque `https://www.seudominio.com.br` pelo domínio real em
+`public/index.html`, `public/robots.txt`, `public/sitemap.xml` e `public/llms.txt`,
+e preencha cidade, UF e horário no JSON-LD (`HomeAndConstructionBusiness`).
+
+| Item | Onde |
+|---|---|
+| Title, description, canonical, Open Graph e imagem de compartilhamento | `<head>` do `index.html`, `img/og-casa-vinilica.png` |
+| Dados estruturados: empresa local, site, página e FAQ | `<script type="application/ld+json">` no `index.html` |
+| Resumo em fatos com data de atualização | seção `#resumo` |
+| Perguntas frequentes (também no `FAQPage`) | seção `#faq`; ao mudar o texto, mude também o JSON-LD |
+| Robôs de busca e de IA liberados, `/api/` bloqueado | `public/robots.txt` |
+| Sitemap | `public/sitemap.xml` |
+| Resumo para assistentes de IA | `public/llms.txt` |
+| Cache dos estáticos | `[[headers]]` no `netlify.toml` |
+
+Não incluímos `aggregateRating` no JSON-LD: o Google não exibe estrelas de
+avaliações publicadas pela própria empresa, e a nota precisa ser real.
+Para estrelas e mapa, use o Perfil da Empresa no Google.

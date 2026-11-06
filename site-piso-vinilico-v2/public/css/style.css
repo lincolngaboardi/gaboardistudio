@@ -223,3 +223,13 @@ button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Resumo em fatos (fácil de ler e de ser citado por buscadores e IAs) */
+.facts-section { padding-bottom: 1rem; }
+.facts-lead { font-size: 1.1rem; text-align: center; margin: -1rem auto 2rem; max-width: 680px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1rem; margin: 0; }
+.facts div { background: var(--white); border-radius: var(--radius); padding: 1rem 1.2rem; box-shadow: var(--shadow); min-width: 0; }
+.facts dt { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); font-weight: 700; }
+.facts dd { margin: .25rem 0 0; font-weight: 500; color: var(--black); }
+.facts-updated { text-align: center; font-size: .8rem; color: var(--muted); margin-top: 1.25rem; }
+.footer-nap { margin-bottom: .5rem; }
