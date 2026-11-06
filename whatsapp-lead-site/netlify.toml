@@ -1,0 +1,23 @@
+# Deploy no Netlify com "Base directory" = whatsapp-lead-site
+[build]
+  publish = "public"
+  functions = "functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Mesmas rotas do site original
+[[redirects]]
+  from = "/api/lead"
+  to = "/.netlify/functions/lead"
+  status = 200
+
+[[redirects]]
+  from = "/api/w/*"
+  to = "/.netlify/functions/w"
+  status = 200
+
+[[redirects]]
+  from = "/api/t/*"
+  to = "/.netlify/functions/t"
+  status = 200
