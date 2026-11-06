@@ -1,63 +1,81 @@
-# Casa Vinílica: site de orçamento de piso vinílico
+# Piso Vinílico [Cidade]: site de rank & rent
 
-One-page de captura de leads pelo WhatsApp para uma empresa de piso vinílico.
-"Casa Vinílica", "Sua Cidade" e os bairros são **provisórios**: troque pelos
-dados do cliente antes de publicar.
+Site de captura de leads de piso vinílico feito para **ranquear numa cidade e
+alugar os leads** para um instalador local. Nada no site é de uma empresa
+específica: marca, cidade, bairros e provas vêm de `site.config.json`, e trocar
+de cidade ou de inquilino é editar esse arquivo e rodar o build.
 
-## Como funciona o "contato via WhatsApp"
-
-Ao contrário do que parece, **nenhum botão abre o WhatsApp**. O fluxo é de
-**captura de lead**:
+## Como usar
 
 ```
- visitante clica em qualquer botão "WhatsApp"   (todos têm data-lead-trigger)
-        │
-        ├─ sendBeacon  POST /api/t/<host>  {tipo:"formulario", pagina}   ← conta o toque
-        ├─ gtag("event","abrir_formulario")                               ← GA4
-        ▼
- modal "Orçamento de Piso Vinílico": pede só o WhatsApp DO CLIENTE
-        │  máscara (45) 99999-9999, valida tamanho, DDD real e dígitos repetidos
-        │  campo honeypot invisível "confirmacao_url" contra bots
-        ▼
- POST /api/lead  {telefone, nicho, cidade, bairro?, confirmacao_url}
-        │  "Enviando para nossa equipe..."
-        ▼
- back-end repassa o número para a equipe comercial
-        │  → a empresa é que chama o cliente no WhatsApp
-        ▼
- { ok:true } → "Solicitação enviada!" + gtag("event","generate_lead")
- { ok:false, error:"Invalid DDD" | "Invalid phone" | ... } → volta ao form com erro inline
- outro erro → tela "Não foi possível enviar" + "Tentar novamente"
+1. Edite site.config.json  (domínio, cidade, UF, bairros com "nota", horário, provas)
+2. node build/build.js      (gera public/: home, bairros, serviços, sitemap, robots, llms.txt)
+3. Configure no Netlify o destino dos leads (abaixo) e publique
 ```
 
-Outros detalhes:
+O Netlify já roda o build sozinho (`command` no `netlify.toml`), com
+**Base directory** = `site-piso-vinilico-v2`.
 
-- **Modo "CTA direto"** (`ctaDireto`, desligado por padrão): o botão vai para
-  `/api/w/<host>?b=<bairro>`, que redireciona para o WhatsApp da empresa. Desligado,
-  ele devolve `/?form=1&m=desligado`, e `?form=1` reabre o modal sozinho.
-- O número da empresa **não aparece no HTML**. Fica só no servidor, o que evita
-  robôs de spam e permite trocar ou distribuir vendedores sem mexer no site.
-- Por que fazer assim: todo contato vira um lead registrado e medido (toques →
-  formulários → leads), mesmo quando o cliente desistiria de mandar a primeira
-  mensagem. É o modelo típico de rede de geração de leads (o site tem página
-  "fazer parceria"), em que um mesmo site atende vários prestadores.
+## O que o build gera
 
-## O que foi implementado aqui
+| Página | Para quê |
+|---|---|
+| `/` | Home: ficha da obra, serviços, cronograma de 5 dias, o que entra no orçamento, FAQ, bairros |
+| `/piso-vinilico-<bairro>/` | Uma por bairro **com nota**. O lead sai marcado com o bairro |
+| `/servicos/<serviço>/` | Uma por serviço (colado, click, manta, contrapiso, rodapés, reparo), com texto próprio |
+| `sitemap.xml`, `robots.txt`, `llms.txt` | Indexação e respostas por IA. Robôs de IA liberados, `/api/` bloqueado |
+
+Toda página tem title e description próprios, canonical, Open Graph, migalhas e
+JSON-LD (empresa local com bairros atendidos, `Service`, `FAQPage`, `BreadcrumbList`).
+Os textos dos serviços, FAQ e cronograma estão em `build/conteudo.js`.
+
+## Regras para não queimar o domínio
+
+- **Nota de bairro é obrigatória.** Sem ela a página não é gerada. Páginas de
+  bairro que só trocam o nome são "doorway pages" e o Google pune o site inteiro.
+  Escreva algo verdadeiro sobre cada bairro.
+- **Provas só reais.** `provas` (nota, avaliações, obras, garantia) ficam vazias
+  até o inquilino fornecer dados verificáveis. Vazio = não aparece.
+- **Sem número público por padrão.** O lead vai para o WhatsApp do inquilino pelo
+  servidor. Trocar de inquilino = trocar `EMPRESA_WHATSAPP`, sem mexer no site.
+- **Perfil no Google** (com o endereço do inquilino) é o que leva ao mapa. O site
+  sozinho ranqueia na busca orgânica.
+
+## Visual
+
+"Ficha de obra": papel, tinta e régua. Archivo (largura variável) + IBM Plex Mono
+para medidas, uma cor de destaque (laranja de obra), verde só nos botões de
+WhatsApp, cantos retos, sem sombras e sem gradientes. A faixa de madeira
+(`public/img/madeira.jpg`) é gerada por `build/textura-madeira.py`; troque por foto
+real de obra do inquilino quando houver.
+
+## Como funciona o contato "via WhatsApp"
+
+Nenhum botão abre o WhatsApp. Todo botão com `data-lead-trigger` abre um modal
+que pede o WhatsApp **do cliente** e envia para `/api/lead`; o instalador é que
+chama o cliente. Assim todo contato vira lead registrado e contável, o que é a
+base para cobrar o inquilino (por lead ou mensalidade).
+
+```
+clique → beacon /api/t (conta toque) → modal → máscara e validação
+→ POST /api/lead {telefone, cidade, bairro, pagina} → servidor valida de novo,
+  descarta bots (honeypot) → avisa o inquilino (WhatsApp Cloud API) e/ou webhook
+→ "Pronto, recebemos seu número" + mostra o número + "Corrigir"
+```
+
+Para contar leads por inquilino, aponte `LEAD_WEBHOOK_URL` para uma planilha
+(n8n, Make, Zapier): cada linha tem telefone, bairro, página e data.
 
 | Arquivo | Papel |
 |---|---|
-| `public/index.html` | One-page (hero, serviços, CTAs, diferenciais, FAQ, contato, bairros, rodapé), botão flutuante e modal |
-| `public/js/lead.js` | Mecanismo do modal: gatilhos, máscara, validação, estados, beacon, GA4, `?form=1`, CTA direto |
-| `public/css/style.css` | Estilos (responsivo, respeita `prefers-reduced-motion`) |
-| `functions/lead.js` | `POST /api/lead`: valida de novo no servidor, honeypot, envia o lead |
-| `functions/w.js` | `GET /api/w/*`: redireciona para `wa.me/<empresa>?text=...` (CTA direto) |
-| `functions/t.js` | `POST /api/t/*`: contador de toques (log) |
-| `lib/phone.js` | Validação de telefone BR compartilhada |
-| `netlify.toml` | Publicação e rotas `/api/*` → funções |
+| `site.config.json` | Tudo que muda por cidade e inquilino |
+| `build/build.js`, `build/conteudo.js` | Gerador e textos |
+| `public/js/lead.js` | Modal: gatilhos, máscara, validação, estados, beacon, GA4, `?form=1` |
+| `public/css/style.css` | Estilos |
+| `functions/lead.js`, `w.js`, `t.js` | `/api/lead`, CTA direto para `wa.me`, contador de toques |
+| `lib/phone.js` | Validação de telefone BR |
 
-O bairro de cada botão (`data-bairro`) é enviado junto com o pedido.
-
-## Para onde vai o lead (variáveis de ambiente no Netlify)
+## Para onde vai o lead (variáveis no Netlify)
 
 Configure **pelo menos um** canal:
 
@@ -76,31 +94,3 @@ Configure **pelo menos um** canal:
 > contato iniciar a conversa. Por isso os avisos usam **templates aprovados**
 > no WhatsApp Manager.
 
-## Deploy
-
-No Netlify: novo site a partir deste repositório com **Base directory** =
-`site-piso-vinilico-v2`, sem comando de build. Configure as variáveis acima e
-teste em `/?form=1`.
-
-Para ativar o GA4, descomente o bloco no `<head>` do `index.html`.
-
-## SEO e GEO (buscadores e respostas por IA)
-
-Antes de publicar, troque `https://www.seudominio.com.br` pelo domínio real em
-`public/index.html`, `public/robots.txt`, `public/sitemap.xml` e `public/llms.txt`,
-e preencha cidade, UF e horário no JSON-LD (`HomeAndConstructionBusiness`).
-
-| Item | Onde |
-|---|---|
-| Title, description, canonical, Open Graph e imagem de compartilhamento | `<head>` do `index.html`, `img/og-casa-vinilica.png` |
-| Dados estruturados: empresa local, site, página e FAQ | `<script type="application/ld+json">` no `index.html` |
-| Resumo em fatos com data de atualização | seção `#resumo` |
-| Perguntas frequentes (também no `FAQPage`) | seção `#faq`; ao mudar o texto, mude também o JSON-LD |
-| Robôs de busca e de IA liberados, `/api/` bloqueado | `public/robots.txt` |
-| Sitemap | `public/sitemap.xml` |
-| Resumo para assistentes de IA | `public/llms.txt` |
-| Cache dos estáticos | `[[headers]]` no `netlify.toml` |
-
-Não incluímos `aggregateRating` no JSON-LD: o Google não exibe estrelas de
-avaliações publicadas pela própria empresa, e a nota precisa ser real.
-Para estrelas e mapa, use o Perfil da Empresa no Google.

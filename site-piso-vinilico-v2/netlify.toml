@@ -1,5 +1,6 @@
 # Deploy no Netlify com "Base directory" = site-piso-vinilico-v2
 [build]
+  command = "node build/build.js"
   publish = "public"
   functions = "functions"
 

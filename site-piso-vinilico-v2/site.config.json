@@ -1,0 +1,44 @@
+{
+  "_leia": "Troque os dados abaixo para cada cidade e rode: node build/build.js. Campos vazios são omitidos do site.",
+
+  "dominio": "https://www.seudominio.com.br",
+  "marca": "Piso Vinílico Sua Cidade",
+  "cidade": "Sua Cidade",
+  "uf": "UF",
+  "regiao": "Sua Cidade e região",
+  "horario": {
+    "texto": "Seg. a sex. 8h às 18h · Sáb. 8h às 12h",
+    "schema": [
+      { "dias": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "abre": "08:00", "fecha": "18:00" },
+      { "dias": ["Saturday"], "abre": "08:00", "fecha": "12:00" }
+    ]
+  },
+  "pagamento": "Pix, débito e crédito parcelado",
+
+  "_provas": "Preencha só com dados reais do instalador que alugar o site. Vazio = não aparece.",
+  "provas": {
+    "nota": "",
+    "avaliacoes": "",
+    "linkAvaliacoes": "",
+    "obras": "",
+    "garantia": ""
+  },
+
+  "prazo": {
+    "area": "100 m²",
+    "dias": "5 dias",
+    "equipes": "2 equipes",
+    "maoDeObra": "≈ 25 min/m²",
+    "cura": "24 h",
+    "umidade": "até 2,5%"
+  },
+
+  "_bairros": "A 'nota' deixa cada página de bairro única. Escreva algo verdadeiro sobre o bairro (tipo de imóvel, piso mais comum, condomínios). Sem nota, a página não é gerada.",
+  "bairros": [
+    { "nome": "Centro", "nota": "No Centro predominam apartamentos com cerâmica antiga e contrapiso irregular. Por isso quase toda obra começa pelo autonivelante, e o vinílico colado é a escolha mais comum: fino, não muda a altura das portas e não exige quebrar o piso." },
+    { "nome": "Jardim América", "nota": "No Jardim América a maioria das obras é em casas térreas, muitas vezes com mais de um ambiente de uma vez. Sala, quartos e corredor costumam somar de 60 a 120 m², o que cabe no cronograma de 5 dias com duas equipes." },
+    { "nome": "Vila Nova", "nota": "Na Vila Nova são comuns imóveis mais antigos com taco ou cerâmica desgastada. Antes de instalar, conferimos se a base está firme: peças soltas são refixadas ou removidas e o autonivelante corrige os desníveis." },
+    { "nome": "Parque Industrial", "nota": "No Parque Industrial atendemos muitos escritórios, consultórios e áreas comerciais, onde o vinílico em manta e o colado de alto tráfego funcionam melhor. Dá para programar a obra em fins de semana para não parar o atendimento." },
+    { "nome": "Cidade Alta", "nota": "Na Cidade Alta há muitos condomínios verticais com regras de horário para obra. Montamos o cronograma de acordo com o regulamento do prédio e protegemos elevador e áreas comuns durante a entrega do material." }
+  ]
+}

@@ -1,9 +1,8 @@
-# Buscadores e assistentes de IA podem ler o site inteiro.
+# Buscadores e assistentes de IA podem ler o site; a API não.
 User-agent: *
 Allow: /
 Disallow: /api/
 
-# Robôs de busca/respostas por IA (liberados explicitamente)
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: GPTBot
